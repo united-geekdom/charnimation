@@ -1,6 +1,7 @@
 {
   "title": "Guy waving",
   "author": ["united-geekdom"],
+  "version": "1.0.0",
   "frames": 8,
   "fps": 3,
   "dimensions": [5,3]
