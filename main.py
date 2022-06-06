@@ -1,2 +1,3 @@
 from reader import chmnread
-chmnread('ch1/ch1.chmn')
+import sys
+chmnread(sys.argv[1])
