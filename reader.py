@@ -5,6 +5,10 @@ def chmnread(chpath):
     metafile = archive.open('metadata.json', 'r')
     metaread = metafile.read()
     data = json.loads(metaread)
-    print(data["title"])
-    print(data["author"][0])
-    
+    framefile = archive.open('frames.json', 'r')
+    frameread = framefile.read()
+    frames = json.loads(frameread)
+    print("Title: " + data["title"])
+    print("Author: " + data["author"][0])
+    for n in frames:
+        print(n)
