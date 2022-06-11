@@ -1,0 +1,2 @@
+def parseframe(arg):
+    pass

@@ -1,4 +1,5 @@
 from reader import chmnread
+
 import sys
 if len(sys.argv) == 1:
     print("Please specify a filepath")
