@@ -1,0 +1,6 @@
+github.com/stoicperlman/fls v0.0.0-20171222144224-f073b7a01081 h1:vEf6LukDDCcMnRXnIMy5XRo/MR4+3lNTAhXxM+x0ZXI=
+github.com/stoicperlman/fls v0.0.0-20171222144224-f073b7a01081/go.mod h1:mXF6uSYLo1a2BZPcVHpP8RstMYoQnCaFF+dmIY726NY=
+golang.org/x/sys v0.0.0-20220610221304-9f5ed59c137d h1:Zu/JngovGLVi6t2J3nmAf3AoTDwuzw85YZ3b9o4yU7s=
+golang.org/x/sys v0.0.0-20220610221304-9f5ed59c137d/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 h1:CBpWXWQpIRjzmkkA+M7q9Fqnwd2mZr3AFqexg8YTfoM=
+golang.org/x/term v0.0.0-20220526004731-065cf7ba2467/go.mod h1:jbD1KX2456YbFQfuXm/mYQcufACuNUgVhRMnK/tPxf8=
