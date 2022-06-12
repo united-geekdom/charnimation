@@ -1,3 +1,9 @@
+/*
+what it does for now:
+Theres a class called "film" which serves as a container to manipulate the file
+a separate function to seek frame n
+and one that returns the correct frame, formatted properly
+*/
 package main
 
 import (
@@ -18,20 +24,30 @@ func main() {
 	a := film{}
 	a.file = fls.LineFile(f)
 	a.setdimensions(3, 3)
-
-	print(a.frame())
+	a.setFPS(60)
+	print(a.cframe())
 	a.cpos(2)
-	print(a.frame())
+	print(a.cframe())
 
 	refresh()
 	for {
-		print(a.frame())
-		time.Sleep(41 * time.Millisecond)
+		print(a.cframe())
+		time.Sleep(time.Duration(a.delay))
 		a.cpos(1)
 		refresh()
 
 	}
 
+}
+
+type film struct {
+	file       *fls.File
+	framecount int64
+	delay      uint
+	dimension  struct {
+		width  int
+		height int
+	}
 }
 
 func (f *film) cpos(n int64) {
@@ -43,26 +59,12 @@ func (f *film) setdimensions(w int, h int) {
 	f.dimension.height = h
 }
 
-type film struct {
-	file       *fls.File
-	framecount int64
-	buf        []string
-	dimension  struct {
-		width  int
-		height int
-	}
+func (f *film) setFPS(fps int) {
+	f.delay = uint(time.Second) / uint(fps)
 }
 
-/*func (f *film) frame() {
-	if len(f.seekframe(f.framecount))%f.dimension.height != 0 {
-		os.Exit(1)
-	}
-	fmt.Println(split(f.seekframe(f.framecount), f.dimension.width))
-
-}*/
-
 //https://stackoverflow.com/a/61469854
-func (f *film) frame() string {
+func (f *film) cframe() string {
 
 	s := f.seekframe(f.framecount)
 	if len(s) == 0 {
