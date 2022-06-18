@@ -1,0 +1,8 @@
+{
+  "title": "Snakey",
+  "author": ["united-geekdom"],
+  "version": "1.0.0",
+  "frames": 5,
+  "fps": 3,
+  "dimensions": [8,4]
+}

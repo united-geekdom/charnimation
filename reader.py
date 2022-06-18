@@ -1,12 +1,9 @@
 import zipfile
-import io
 import json
-def chmnread(chpath):
-    with zipfile.ZipFile(chpath, 'r') as z:
-        with z.open('metadata.json', 'r') as m:
-            metaread = m.read()
-            data = json.loads(metaread)
+import os
 
-        with io.TextIOWrapper(z.open("frames.txt"), encoding="utf-8") as fs:
-            toPrint = fs.read()
-            print(toPrint)
+def chmnread(chpath):
+    os.remove("filedata/frames.txt")
+    os.remove("filedata/metadata.json")
+    with zipfile.ZipFile(chpath, 'r') as z:
+        z.extractall("filedata")
