@@ -1,5 +1,6 @@
 import linecache
 import json
+import sys
 def parseFrame(l, h):
     toPrint = ""
     for n in range((l-1)*(h+1) + 1, l*(h+1) + 1):
@@ -11,4 +12,5 @@ def returnFrame():
     height = metadata["dimensions"][1]
     fl = metadata["frames"]
     for c in range(fl):
-        print(parseFrame(c+1, height))
+        sys.stdout.write("\r" + parseFrame(c+1, height))
+        sys.stdout.flush()
