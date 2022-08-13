@@ -9,18 +9,23 @@ def parseFrame(l, h, ti, au):
             toPrint += linecache.getline("filedata/frames.txt", n)
     toPrint += f"\nTitle: {ti}\nBy: {au}\n"
     return toPrint
-def returnFrame():
+def returnFrame(start):
     metadata = json.load(open("filedata/metadata.json"))
     height = metadata["dimensions"][1]
     fl = metadata["frames"]
     intrv = 1/metadata["fps"]
     title = metadata["title"]
+
+    global findex 
+    findex = start
+
     if len(metadata["author"]) == 1:
         author = metadata["author"][0]
     else:
         author = ", ".join(map(str, metadata["author"]))
 
-    for c in range(fl):
+    for c in range(start, fl):
         print('\033[H\033[J', end='')
         print(parseFrame(c+1, height, title, author), end="\r")
         time.sleep(intrv)
+        findex += 1

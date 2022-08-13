@@ -1,8 +1,8 @@
 {
-  "title": "travelingo",
-  "author": ["united-geekdom", "fisik-yum"],
+  "title": "Waste of guitar",
+  "author": ["Uncle Ernie"],
   "version": "1.0.0",
-  "frames": 9,
-  "fps": 2,
-  "dimensions": [6,4]
+  "frames": 30,
+  "fps": 8,
+  "dimensions": [7,5]
 }
