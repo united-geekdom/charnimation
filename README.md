@@ -19,4 +19,4 @@ If passed a nonexistent file or invalid parameters, the program will not display
 
 ### Copyright Attribution
 `loadscreen.chnm` by fisik_yum
-`travelingo.chnm` by united-geekdom (adapted for this implementation by fisik_yum)
+`travelingo.chnm` by united-geekdom (adapted for this implementation by fisik_yum)\
