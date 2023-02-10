@@ -8,28 +8,59 @@ package main
 
 import (
 	"bufio"
+	"flag"
+	"fmt"
 	"io"
 	"os"
+	"os/signal"
 	"strings"
 	"time"
 
 	"github.com/stoicperlman/fls"
 )
 
+var file string
+var wi int
+var he int
+
+func init() {
+	flag.StringVar(&file, "f", "", ".CHNM file to read")
+	flag.IntVar(&wi, "w", 0, "width parameter")
+	flag.IntVar(&he, "h", 0, "height parameter")
+
+}
+
 func main() {
+	flag.Parse()
 
-	f, _ := os.OpenFile("example.txt", os.O_RDONLY, 0600)
+	c := make(chan os.Signal)
+	signal.Notify(c, os.Interrupt)
+
+	go func() {
+		sig := <-c
+		fmt.Println(sig)
+		fmt.Println("\033[?25h")
+		os.Exit(0)
+	}()
+
+	test(file, wi, he)
+
+}
+
+func test(fl string, width int, height int) {
+	f, _ := os.OpenFile(fl, os.O_RDONLY, 0600)
 	defer f.Close()
-
+	fmt.Println("\033[?25l")
 	a := film{}
 	a.file = fls.LineFile(f)
-	a.setdimensions(3, 3)
-	a.setFPS(60)
+	a.setdimensions(width, height)
+	a.setFPS(10)
 	print(a.cframe())
-	a.cpos(2)
+	a.cpos(1)
 	print(a.cframe())
 
 	refresh()
+	defer os.Exit(0)
 	for {
 		print(a.cframe())
 		time.Sleep(time.Duration(a.delay))
@@ -37,7 +68,6 @@ func main() {
 		refresh()
 
 	}
-
 }
 
 type film struct {
@@ -63,7 +93,7 @@ func (f *film) setFPS(fps int) {
 	f.delay = uint(time.Second) / uint(fps)
 }
 
-//https://stackoverflow.com/a/61469854
+// https://stackoverflow.com/a/61469854
 func (f *film) cframe() string {
 
 	s := f.seekframe(f.framecount)
