@@ -9,6 +9,8 @@ WIP reference implementation of the `.chnm` file format
 options for `file`  
 `loadscreen.chnm` width:`3` height:`3`  
 `travelingo.chnm` width:`6` height:`4`
+`snakey.chnm` width:`8` height:`4`
+`jumpingjacks.chnm` width:`3` height:`3`
 
 ## Adding new animations
 
@@ -24,5 +26,5 @@ If passed a nonexistent file or invalid parameters, the program will not display
 
 ### Copyright Attribution
 
-`loadscreen.chnm` by fisik_yum\
-`travelingo.chnm` by united-geekdom (adapted for this implementation by fisik_yum)
+`loadscreen.chnm` by fisik_yum  
+`travelingo.chnm`, `snakey.chnm`, `jumpingjacks.chnm` by united-geekdom (adapted for this implementation by fisik_yum)
