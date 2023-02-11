@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Building project"
-if [ -d "data" ] 
+if [ -d "build" ] 
 then
     rm -rf build/*
 else
