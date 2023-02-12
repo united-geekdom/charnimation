@@ -1,0 +1,14 @@
+Loosely based on the implementation described at asciimation (dot) co (dot) nz
+//https://www.asciimation.co.nz/asciimation/ascii_faq.html
+
+
+
+
+Description of a "full" CHNM file
+
+The first line of any chnm file describes the dimensions of the film, its speed, and other, possibly optional metadata. This is not described on the linked webpage.
+
+all parameters are separated by a single whitespace
+<width> <height> <FPS>
+
+each line starting from line 1 is a single frame
