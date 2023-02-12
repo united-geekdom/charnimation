@@ -8,7 +8,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -18,8 +17,6 @@ import (
 )
 
 var file string
-var wi uint
-var he uint
 
 func init() {
 	flag.StringVar(&file, "f", "", ".CHNM file to read")
@@ -31,6 +28,7 @@ func main() {
 	s, _ := tcell.NewScreen()
 	s.Init()
 	s.Show()
+	play := true
 
 	go func() {
 		for {
@@ -38,10 +36,12 @@ func main() {
 			switch ev := ev.(type) {
 			case *tcell.EventKey:
 				switch ev.Key() {
-				case tcell.KeyEscape, tcell.KeyEnter:
+				case tcell.KeyEscape:
 					s.Fini()
 					os.Exit(1)
 					return
+				case tcell.KeyEnter:
+					play = !play
 				}
 			case *tcell.EventResize:
 				s.Sync()
@@ -56,18 +56,19 @@ func main() {
 	defer f.Close()
 	film := fls.LineFile(f)
 	wi, _, fps := dataOf(film)
-	fmt.Println(fps)
 	fcount := 1
 	delay := uint(time.Second) / uint(fps)
 	for {
-		frame, err := frameNOf(film, int64(fcount), wi)
-		if err != nil {
-			fcount = 1
-			frame, err = frameNOf(film, int64(fcount), wi)
+		if play {
+			frame, err := frameNOf(film, int64(fcount), wi)
+			if err != nil {
+				fcount = 1
+				frame, err = frameNOf(film, int64(fcount), wi)
+			}
+			putframe(s, frame)
+			time.Sleep(time.Duration(delay))
+			fcount++
 		}
-		putframe(s, frame)
-		time.Sleep(time.Duration(delay))
-		fcount++
 	}
 
 }

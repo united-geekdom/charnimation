@@ -6,7 +6,6 @@ package main
 import (
 	"bufio"
 	"errors"
-	"fmt"
 	"io"
 	"log"
 	"strconv"
@@ -35,7 +34,6 @@ func dataOf(f *fls.File) (int, int, int) { //width height fps
 		log.Fatal(err)
 	}
 	tentative := strings.Split(string(line), " ")
-	fmt.Println(tentative)
 	if len(tentative) < 3 {
 		log.Fatal("Invalid metadata descriptor")
 	}
@@ -47,6 +45,5 @@ func dataOf(f *fls.File) (int, int, int) { //width height fps
 			log.Fatal("Invalid file descriptor")
 		}
 	}
-	fmt.Println(keys)
 	return keys[0], keys[1], keys[2]
 }
