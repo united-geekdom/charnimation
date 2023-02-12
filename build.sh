@@ -11,4 +11,4 @@ echo "Copying files"
 mv skimmer build/
 cp -r data/* build/
 cd build 
-./skimmer -f $1 -w $2 -h $3
+./skimmer -f $1
