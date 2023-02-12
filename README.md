@@ -8,7 +8,7 @@ WIP reference implementation of the `.chnm` file format
 
 options for `file`  
 `loadscreen.chnm` width:`3` height:`3`  
-`travelingo.chnm` width:`6` height:`4`
+`travelingo.chnm` width:`6` height:`4`  
 `snakey.chnm` width:`8` height:`4`
 `jumpingjacks.chnm` width:`3` height:`3`
 
@@ -22,7 +22,7 @@ Each frame is a single line of constant length, no escape sequences and indents.
 
 ## Troubleshooting
 
-If passed a nonexistent file or invalid parameters, the program will not display anything, and after quitting your cursor will remain hidden. To fix this, start up a new terminal session, or run `skimmer` with valid parameters
+If passed a nonexistent file or invalid parameters, the program will not display anything, and after quitting your cursor will remain hidden. To fix this, start up a new terminal session, or run `skimmer` with valid parameters  
 To quit, press the Escape key.
 
 ### Copyright Attribution
