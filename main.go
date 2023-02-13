@@ -29,7 +29,7 @@ func main() {
 	s.Init()
 	s.Show()
 	play := true
-
+	loop := true
 	go func() {
 		for {
 			ev := s.PollEvent()
@@ -38,17 +38,19 @@ func main() {
 				switch ev.Key() {
 				case tcell.KeyEscape:
 					s.Fini()
-					os.Exit(1)
+					os.Exit(0)
 					return
 				case tcell.KeyEnter:
 					play = !play
+				case tcell.KeyTab:
+					loop = !loop
 				}
 			case *tcell.EventResize:
 				s.Sync()
 			}
 		}
 	}()
-
+	//setup
 	f, err := os.Open(file)
 	if err != nil {
 		log.Fatal(err)
@@ -58,12 +60,17 @@ func main() {
 	wi, _, fps := dataOf(film)
 	fcount := 1
 	delay := uint(time.Second) / uint(fps)
+
+	//main playing loop
 	for {
 		if play {
 			frame, err := frameNOf(film, int64(fcount), wi)
-			if err != nil {
+			if err != nil && loop {
 				fcount = 1
 				frame, err = frameNOf(film, int64(fcount), wi)
+			} else if err != nil && !loop {
+				s.Fini()
+				os.Exit(0)
 			}
 			putframe(s, frame)
 			time.Sleep(time.Duration(delay))

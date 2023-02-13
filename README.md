@@ -9,8 +9,10 @@ WIP reference implementation of the `.chnm` file format
 options for `file`  
 `loadscreen.chnm` width:`3` height:`3`  
 `travelingo.chnm` width:`6` height:`4`  
-`snakey.chnm` width:`8` height:`4`
+`snakey.chnm` width:`8` height:`4`  
 `jumpingjacks.chnm` width:`3` height:`3`
+
+Press the Escape Key to Quit, or Tab to disable looping.
 
 ## Adding new animations
 
