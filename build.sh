@@ -11,5 +11,5 @@ echo "Copying files"
 mv skimmer build/
 cp -r data/* build/
 cd build 
-stty -icanon
+#stty -icanon
 ./skimmer -f $1
